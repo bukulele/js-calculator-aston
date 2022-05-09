@@ -1,9 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Biryani:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Biryani:wght@200;400;600&display=swap");
 
 // COLORS
 
 $main: #c9cfff;
 $main-light: #eff3ff;
+$accent: #abc3ff;
+$dark-grey: #4d4d4d;
 
 %full-size {
   width: 100%;
@@ -20,6 +22,7 @@ $main-light: #eff3ff;
 
 html {
   font-family: "Biryani", sans-serif;
+  font-weight: 200;
 }
 
 html,
@@ -49,7 +52,33 @@ body {
     @extend %full-size;
     border-radius: 20px;
     background: linear-gradient(white, $main-light);
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 3fr 1fr;
+    .formula-window {
+      @extend %full-size;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      font-size: 20px;
+      font-weight: 400;
+      color: $accent;
+      padding: 5px;
+      text-align: end;
+    }
+    .user-input {
+      font-size: 25px;
+      font-weight: 600;
+      color: $accent;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      padding: 5px;
+    }
   }
+
   .calculator-buttons {
     @extend %full-size;
     display: grid;
@@ -93,9 +122,14 @@ body {
             color: white;
           }
         }
+        .button-operation_equal {
+          background-color: $accent;
+          color: white;
+        }
         .button-number {
           width: 62px;
           height: 62px;
+          color: $dark-grey;
           &:hover {
             @extend %full-size;
             background-color: $main;

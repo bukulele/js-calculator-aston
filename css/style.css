@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Biryani:wght@200&display=swap");
-.calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-number:hover, .calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-operation, .calculator .calculator-buttons .calculator-buttons__area, .calculator .calculator-buttons, .calculator .calculator-window, html,
+@import url("https://fonts.googleapis.com/css2?family=Biryani:wght@200;400;600&display=swap");
+.calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-number:hover, .calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-operation, .calculator .calculator-buttons .calculator-buttons__area, .calculator .calculator-buttons, .calculator .calculator-window .formula-window, .calculator .calculator-window, html,
 body {
   width: 100%;
   height: 100%;
@@ -15,6 +15,7 @@ body {
 
 html {
   font-family: "Biryani", sans-serif;
+  font-weight: 200;
 }
 
 body {
@@ -38,6 +39,30 @@ body {
 .calculator .calculator-window {
   border-radius: 20px;
   background: linear-gradient(white, #eff3ff);
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 3fr 1fr;
+}
+.calculator .calculator-window .formula-window {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  font-size: 20px;
+  font-weight: 400;
+  color: #abc3ff;
+  padding: 5px;
+  text-align: end;
+}
+.calculator .calculator-window .user-input {
+  font-size: 25px;
+  font-weight: 600;
+  color: #abc3ff;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 5px;
 }
 .calculator .calculator-buttons {
   display: grid;
@@ -76,9 +101,14 @@ body {
   background-color: #c9cfff;
   color: white;
 }
+.calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-operation_equal {
+  background-color: #abc3ff;
+  color: white;
+}
 .calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-number {
   width: 62px;
   height: 62px;
+  color: #4d4d4d;
 }
 .calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-number:hover {
   background-color: #c9cfff;
