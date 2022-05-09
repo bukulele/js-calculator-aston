@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Biryani:wght@200&display=swap");
+.calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-number:hover, .calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-operation, .calculator .calculator-buttons .calculator-buttons__area, .calculator .calculator-buttons, .calculator .calculator-window, html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  cursor: default;
+}
+
+html {
+  font-family: "Biryani", sans-serif;
+}
+
+body {
+  background-color: #c9cfff;
+}
+
+.calculator {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 2fr 4fr;
+  padding: 5px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  width: 320px;
+  height: 600px;
+  border-radius: 30px;
+}
+.calculator .calculator-window {
+  border-radius: 20px;
+  background: linear-gradient(white, #eff3ff);
+}
+.calculator .calculator-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-areas: "clear back percentage division" "seven eight nine multiply" "four five six minus" "one two three plus" ". zero period equal";
+  align-items: center;
+}
+.calculator .calculator-buttons .calculator-buttons__area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper {
+  height: 65px;
+  width: 65px;
+  background: linear-gradient(#c9cfff, white, white);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button {
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+.calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-operation {
+  background-color: #eff3ff;
+  color: #c9cfff;
+}
+.calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-operation:hover {
+  background-color: #c9cfff;
+  color: white;
+}
+.calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-number {
+  width: 62px;
+  height: 62px;
+}
+.calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-number:hover {
+  background-color: #c9cfff;
+  color: white;
+}
+.calculator .calculator-buttons .clear {
+  grid-area: clear;
+}
+.calculator .calculator-buttons .back {
+  grid-area: back;
+}
+.calculator .calculator-buttons .percentage {
+  grid-area: percentage;
+}
+.calculator .calculator-buttons .division {
+  grid-area: division;
+}
+.calculator .calculator-buttons .multiply {
+  grid-area: multiply;
+}
+.calculator .calculator-buttons .minus {
+  grid-area: minus;
+}
+.calculator .calculator-buttons .plus {
+  grid-area: plus;
+}
+.calculator .calculator-buttons .equal {
+  grid-area: equal;
+}
+.calculator .calculator-buttons .period {
+  grid-area: period;
+}
+.calculator .calculator-buttons .zero {
+  grid-area: zero;
+}
+.calculator .calculator-buttons .one {
+  grid-area: one;
+}
+.calculator .calculator-buttons .two {
+  grid-area: two;
+}
+.calculator .calculator-buttons .three {
+  grid-area: three;
+}
+.calculator .calculator-buttons .four {
+  grid-area: four;
+}
+.calculator .calculator-buttons .five {
+  grid-area: five;
+}
+.calculator .calculator-buttons .six {
+  grid-area: six;
+}
+.calculator .calculator-buttons .seven {
+  grid-area: seven;
+}
+.calculator .calculator-buttons .eight {
+  grid-area: eight;
+}
+.calculator .calculator-buttons .nine {
+  grid-area: nine;
+}/*# sourceMappingURL=style.css.map */
