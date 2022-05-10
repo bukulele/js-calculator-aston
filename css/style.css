@@ -36,6 +36,12 @@ body {
   height: 600px;
   border-radius: 30px;
 }
+.calculator > * {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
 .calculator .calculator-window {
   border-radius: 20px;
   background: linear-gradient(white, #eff3ff);
@@ -50,9 +56,10 @@ body {
   overflow-wrap: anywhere;
   word-break: break-word;
   font-size: 20px;
+  line-height: 120%;
   font-weight: 400;
   color: #abc3ff;
-  padding: 5px;
+  padding: 5px 10px;
   text-align: end;
 }
 .calculator .calculator-window .user-input {
@@ -92,6 +99,9 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 30px;
+}
+.calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button > * {
+  pointer-events: none;
 }
 .calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-operation {
   background-color: #eff3ff;
