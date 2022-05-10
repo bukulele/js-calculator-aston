@@ -112,10 +112,10 @@ function keyboardListener(event) {
 
 function manageUserInputWindow(data) {
   if (calcDone === true) {
-    if (!isNaN(data)) {
-      userInputWindow.innerText = data;
-    } else if (data === ".") {
+    if (data === ".") {
       userInputWindow.innerText = "0.";
+    } else {
+      userInputWindow.innerText = data;
     }
   } else {
     if (isNaN(data) && data !== "." && data !== "delete") {
@@ -202,9 +202,13 @@ function manageFormulaWindow(data) {
         formulaWindow.insertAdjacentText("beforeend", data);
       } else if (isNaN(data) && data !== ".") {
         formulaWindow.insertAdjacentText("beforeend", data);
-      } else if (data === ".") {
-        if (!Array.from(userInputWindow.innerText).includes("."))
-          formulaWindow.insertAdjacentText("beforeend", data);
+      } else if (
+        data === "." &&
+        Array.from(userInputWindow.innerText).includes(".")
+      ) {
+        console.log(Array.from(userInputWindow.innerText).includes("."));
+
+        formulaWindow.insertAdjacentText("beforeend", data);
       }
     } else if (isNaN(lastElement) && lastElement !== "-") {
       if (!isNaN(data)) {
@@ -259,18 +263,22 @@ function calcResult(expression, operation) {
     let newFormula = formulaWindow.innerText.slice(0, i + 1);
     formulaWindow.innerText = newFormula + "=";
   } else if (operation === "%") {
-    let slicedExp = exp.slice(0, exp.length - 2);
-    let percentValue = exp[exp.length - 1];
-    let preCalcFunction = new Function("return " + slicedExp.join(""));
-    let preCalcResult = (preCalcFunction().toFixed(9) * 100) / 100;
-    if (exp[exp.length - 2] === "-") {
-      result = preCalcResult - (preCalcResult * percentValue) / 100;
-    } else if (exp[exp.length - 2] === "+") {
-      result = preCalcResult + (preCalcResult * percentValue) / 100;
-    } else if (exp[exp.length - 2] === "*") {
-      result = (preCalcResult * percentValue) / 100;
-    } else if (exp[exp.length - 2] === "/") {
-      result = (preCalcResult / percentValue) * 100;
+    if (isNaN(exp.join(""))) {
+      let slicedExp = exp.slice(0, exp.length - 2);
+      let percentValue = exp[exp.length - 1];
+      let preCalcFunction = new Function("return " + slicedExp.join(""));
+      let preCalcResult = (preCalcFunction().toFixed(9) * 100) / 100;
+      if (exp[exp.length - 2] === "-") {
+        result = preCalcResult - (preCalcResult * percentValue) / 100;
+      } else if (exp[exp.length - 2] === "+") {
+        result = preCalcResult + (preCalcResult * percentValue) / 100;
+      } else if (exp[exp.length - 2] === "*") {
+        result = (preCalcResult * percentValue) / 100;
+      } else if (exp[exp.length - 2] === "/") {
+        result = (preCalcResult / percentValue) * 100;
+      }
+    } else {
+      result = exp.join("") / 100;
     }
     let i = formulaWindow.innerText.length - 1;
     while (isNaN(formulaWindow.innerText[i])) {
