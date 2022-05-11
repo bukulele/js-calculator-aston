@@ -34,9 +34,7 @@ const calcElements = [
 ];
 
 function executeClick(data) {
-  if (data === "equal" && calcDone === false) {
-    calcResult(formulaWindow.innerText, data);
-  } else if (data === "%") {
+  if ((data === "equal" || data === "%") && calcDone === false) {
     calcResult(formulaWindow.innerText, data);
   } else if (data !== "equal" && data !== "%") {
     if (data === "clear" || (calcDone === true && data === "delete")) {
@@ -253,6 +251,7 @@ function manageFormulaWindow(data) {
 
 function calcResult(expression, operation) {
   const exp = convertExpression(expression);
+  console.log(exp);
   let result;
   if (operation === "equal") {
     let calc = new Function("return " + exp.join(""));
