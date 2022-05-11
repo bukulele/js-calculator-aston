@@ -23,6 +23,7 @@ $dark-grey: #4d4d4d;
 html {
   font-family: "Biryani", sans-serif;
   font-weight: 200;
+  touch-action: none;
 }
 
 html,
@@ -126,7 +127,13 @@ body {
           @extend %full-size;
           background-color: $main-light;
           color: $main;
-          &:hover {
+          @media (hover: hover) {
+            &:hover {
+              background-color: $main;
+              color: white;
+            }
+          }
+          &:active {
             background-color: $main;
             color: white;
           }
@@ -139,8 +146,17 @@ body {
           width: 62px;
           height: 62px;
           color: $dark-grey;
-          &:hover {
-            @extend %full-size;
+          @media (hover: hover) {
+            &:hover {
+              width: 100%;
+              height: 100%;
+              background-color: $main;
+              color: white;
+            }
+          }
+          &:active {
+            width: 100%;
+            height: 100%;
             background-color: $main;
             color: white;
           }

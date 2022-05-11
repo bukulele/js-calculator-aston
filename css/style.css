@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Biryani:wght@200;400;600&display=swap");
-.calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-number:hover, .calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-operation, .calculator .calculator-buttons .calculator-buttons__area, .calculator .calculator-buttons, .calculator .calculator-window .formula-window, .calculator .calculator-window, html,
+.calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-operation, .calculator .calculator-buttons .calculator-buttons__area, .calculator .calculator-buttons, .calculator .calculator-window .formula-window, .calculator .calculator-window, html,
 body {
   width: 100%;
   height: 100%;
@@ -16,6 +16,7 @@ body {
 html {
   font-family: "Biryani", sans-serif;
   font-weight: 200;
+  touch-action: none;
 }
 
 body {
@@ -107,7 +108,13 @@ body {
   background-color: #eff3ff;
   color: #c9cfff;
 }
-.calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-operation:hover {
+@media (hover: hover) {
+  .calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-operation:hover {
+    background-color: #c9cfff;
+    color: white;
+  }
+}
+.calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-operation:active {
   background-color: #c9cfff;
   color: white;
 }
@@ -120,7 +127,17 @@ body {
   height: 62px;
   color: #4d4d4d;
 }
-.calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-number:hover {
+@media (hover: hover) {
+  .calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-number:hover {
+    width: 100%;
+    height: 100%;
+    background-color: #c9cfff;
+    color: white;
+  }
+}
+.calculator .calculator-buttons .calculator-buttons__area .calculator-button-wrapper .button-number:active {
+  width: 100%;
+  height: 100%;
   background-color: #c9cfff;
   color: white;
 }
