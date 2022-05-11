@@ -251,7 +251,6 @@ function manageFormulaWindow(data) {
 
 function calcResult(expression, operation) {
   const exp = convertExpression(expression);
-  console.log(exp);
   let result;
   if (operation === "equal") {
     let calc = new Function("return " + exp.join(""));
