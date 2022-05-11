@@ -179,18 +179,12 @@ function manageFormulaWindow(data) {
     }
     calcDone = false;
   } else {
-    if (
-      formulaWindow.innerText === "0" ||
-      formulaWindow.innerText.length === 0
-    ) {
+    if (formulaWindow.innerText === "0") {
       if (!isNaN(data)) {
         formulaWindow.innerText = data;
       } else if (isNaN(data) && data !== ".") {
         formulaWindow.insertAdjacentText("beforeend", data);
-      } else if (
-        data === "." &&
-        !Array.from(userInputWindow.innerText).includes(data)
-      ) {
+      } else if (data === ".") {
         formulaWindow.insertAdjacentText("beforeend", data);
       }
     } else if (
@@ -202,13 +196,20 @@ function manageFormulaWindow(data) {
         formulaWindow.insertAdjacentText("beforeend", data);
       } else if (isNaN(data) && data !== ".") {
         formulaWindow.insertAdjacentText("beforeend", data);
-      } else if (
-        data === "." &&
-        Array.from(userInputWindow.innerText).includes(".")
-      ) {
-        console.log(Array.from(userInputWindow.innerText).includes("."));
-
-        formulaWindow.insertAdjacentText("beforeend", data);
+      } else if (data === ".") {
+        let i = formulaWindow.innerText.length - 1;
+        while (
+          !isNaN(formulaWindow.innerText[i]) ||
+          formulaWindow.innerText[i] === "."
+        ) {
+          i--;
+        }
+        let lastNumber = formulaWindow.innerText.slice(
+          i + 1,
+          formulaWindow.innerText.length
+        );
+        if (!Array.from(lastNumber).includes("."))
+          formulaWindow.insertAdjacentText("beforeend", data);
       }
     } else if (isNaN(lastElement) && lastElement !== "-") {
       if (!isNaN(data)) {
@@ -219,7 +220,7 @@ function manageFormulaWindow(data) {
           formulaWindow.innerText.length - 1
         );
         formulaWindow.innerText = newFormula + data;
-      } else if (data === ".") {
+      } else if (data === "." && lastElement !== ".") {
         formulaWindow.insertAdjacentText("beforeend", "0.");
       } else if (data === "-") {
         formulaWindow.insertAdjacentText("beforeend", data);
