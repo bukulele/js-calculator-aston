@@ -151,6 +151,17 @@ function manageFormulaWindow(data) {
     formulaWindow.innerText.length > 1
       ? formulaWindow.innerText[formulaWindow.innerText.length - 2]
       : null;
+  let idx = formulaWindow.innerText.length - 1;
+  while (
+    !isNaN(formulaWindow.innerText[idx]) ||
+    formulaWindow.innerText[idx] === "."
+  ) {
+    idx--;
+  }
+  let lastNumber = formulaWindow.innerText.slice(
+    idx + 1,
+    formulaWindow.innerText.length
+  );
   if (data === "delete" && formulaWindow.innerText.length > 1) {
     let newUserInput = formulaWindow.innerText.slice(
       0,
@@ -190,22 +201,24 @@ function manageFormulaWindow(data) {
         formulaWindow.innerText !== "0") ||
       (formulaWindow.innerText.length > 1 && !isNaN(lastElement))
     ) {
-      if (!isNaN(data)) {
+      if (!isNaN(data) && Number(lastNumber) !== 0) {
+        formulaWindow.insertAdjacentText("beforeend", data);
+      } else if (
+        !isNaN(data) &&
+        Number(lastNumber) === 0 &&
+        !Array.from(lastNumber).includes(".")
+      ) {
+        let newFormula = formulaWindow.innerText.slice(0, idx + 1);
+        formulaWindow.innerText = newFormula + data;
+      } else if (
+        !isNaN(data) &&
+        Number(lastNumber) === 0 &&
+        Array.from(lastNumber).includes(".")
+      ) {
         formulaWindow.insertAdjacentText("beforeend", data);
       } else if (isNaN(data) && data !== ".") {
         formulaWindow.insertAdjacentText("beforeend", data);
       } else if (data === ".") {
-        let i = formulaWindow.innerText.length - 1;
-        while (
-          !isNaN(formulaWindow.innerText[i]) ||
-          formulaWindow.innerText[i] === "."
-        ) {
-          i--;
-        }
-        let lastNumber = formulaWindow.innerText.slice(
-          i + 1,
-          formulaWindow.innerText.length
-        );
         if (!Array.from(lastNumber).includes("."))
           formulaWindow.insertAdjacentText("beforeend", data);
       }
